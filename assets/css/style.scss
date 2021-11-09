@@ -1,0 +1,322 @@
+$breakpoints: (
+  'sm': 'screen and (max-width: 400px)',
+  'md': 'screen and (max-width: 768px)',
+  'pc': 'screen and (min-width: 1024px)',
+) !default;
+@mixin pc($breakpoint: pc) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+html {
+  /* ルートのフォントサイズを10pxに設定しておく */
+font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6em;
+  .sp{
+    display: block;
+    @include pc() {
+      display: none;
+    }
+  }
+  .pc{
+    display: none;
+    @include pc() {
+      display: block;
+    }
+  }
+}
+
+p{
+  font-family: toppan-bunkyu-gothic-pr6n, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2.sub-title{
+  margin-top: 50px;
+  display: inline-block;
+  font-size: 2.4rem;
+  font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+  border-bottom: 5px solid #f7b52c;
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    font-family: hero-new, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 6rem;
+    left: 50px;
+    bottom: -10px;
+    color: rgba($color: #000, $alpha: .1);
+  }
+  &::after{
+    content: url(/assets/img/kara.svg);
+    position: absolute;
+    top: -15px;
+    right: 0;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.container{
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+#main-view{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::before{
+    width: 100%;
+    height: .8rem;
+    content: '';
+    background-color: #FDF3DE;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+  &::after{
+    width: 100%;
+    height: .8rem;
+    content: '';
+    background-color: #f7b52c;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  #bg-movie{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#intro-message{
+  .container{
+    margin-top: 45px;
+    @include pc() {
+      display: flex;
+    }
+    .colum.message{
+      @include pc() {
+        width: 50%;
+      }
+      h3{
+        font-size: 2.1rem;
+        line-height: 3.7rem;
+        font-family: source-han-sans-japanese, sans-serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+      p{
+         margin: 24px 0;
+         font-size: 1.4rem;
+         line-height: 2.4rem;
+         text-align: justify;
+      }
+    }
+    .colum.copy{
+      padding: 50px 0;
+      height: 100%;
+      text-align: center;
+      background-image:url("/assets/img/bland-text-bg.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      @include pc() {
+        width: 50%;
+      }
+      img{
+        width: 90%;
+      }
+    }
+  }
+}
+//Uocmoとは？
+#about{
+  background-color: #fff;
+  background-image: linear-gradient(#FDF3DE .5px, transparent 1px), linear-gradient(to right, #FDF3DE .5px, #fff 1px);
+  background-size: 20px 20px;
+  padding-top: 40px;
+  position: relative;
+  .img-area{
+    text-align: center;
+    padding-top: 20px;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 80%;
+      height: 100%;
+      background-color: #f7b52c;
+      background-size: 6px 6px;
+      background-position: 0 0, 3px 3px;
+    }
+    img{
+      width: 80%;
+      position: relative;
+      z-index: 1;
+
+    }
+  }
+  h2.sub-title{
+    &::before{
+      content: "ABOUT";
+    }
+  }
+  .text{
+    margin-top: 25px;
+    line-height: 3.4rem;
+    text-align: justify;
+  }
+}
+.slider {
+  width: 100%;
+  margin:0 auto;
+  padding: 30px 0;
+  img {
+    width:70vw;/*スライダー内の画像を60vwにしてレスポンシブ化*/
+    height:auto;
+    margin: 0 10px;
+  }
+  .slick-slide {
+    transform: scale(1);/*左右の画像のサイズを80%に*/
+    transition: all .5s;/*拡大や透過のアニメーションを0.5秒で行う*/
+    opacity: 0.5;/*透過50%*/
+    &.slick-center{
+      transform: scale(1);/*中央の画像のサイズだけ等倍に*/
+      opacity: 1;/*透過なし*/
+    }
+  }
+}
+
+
+
+
+/*矢印の設定*/
+
+// /*戻る、次へ矢印の位置*/
+// .slick-prev, 
+// .slick-next {
+//   position: absolute;/*絶対配置にする*/
+//   top: 42%;
+//   cursor: pointer;/*マウスカーソルを指マークに*/
+//   outline: none;/*クリックをしたら出てくる枠線を消す*/
+//   border-top: 2px solid #6 66;/*矢印の色*/
+//   border-right: 2px solid #666;/*矢印の色*/
+//   height: 15px;
+//   width: 15px;
+// }
+
+// .slick-prev {/*戻る矢印の位置と形状*/
+//   left: -1.5%;
+//   transform: rotate(-135deg);
+// }
+
+// .slick-next {/*次へ矢印の位置と形状*/
+//   right: -1.5%;
+//   transform: rotate(45deg);
+// }
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+  text-align:center;
+  margin:20px 0 0 0;
+  li {
+    display:inline-block;
+    margin:0 5px;
+  }
+  button {
+    color: transparent;
+    outline: none;
+    width:8px;/*ドットボタンのサイズ*/
+    height:8px;/*ドットボタンのサイズ*/
+    display:block;
+    border-radius:50%;
+    background:#ccc;/*ドットボタンの色*/
+  }
+  .slick-active{
+    button{
+      background:#333;/*ドットボタンの現在地表示の色*/
+    }
+  }
+}
+
+//大切にしていること
+#point{
+  background-color: #FDF5E3;
+  h2.sub-title{
+    &::before{
+      content: "POINT";
+    }
+  }
+  .sub-title-text{
+    margin-top: 10px;
+    width: 95%;
+  }
+  .inner{
+    padding: 80px 0;
+    counter-reset: count01;
+    .colum{
+      max-width: 300px;
+      padding:  30px;
+      margin: 0 auto;
+      background-color: #FCE9BE;
+      border-radius: 5px;
+      text-align: center;
+      position: relative;
+      &:not(:first-child){
+        margin-top: 60px;
+      }
+      &::before{
+        counter-increment: count01;
+        content: counter(count01,decimal-leading-zero);
+        position: absolute;
+        top: -40px;
+        right: 28px;
+        font-family: josefin-sans, sans-serif;
+        font-size: 6rem;
+        color: #f7b52c ;
+        &:nth-child(2){
+          content: "02";
+        }
+        &:nth-child(3){
+          content: "03";
+        }
+      }
+      &::after{
+        content: url(/assets/img/kara-outline.svg);
+        position: absolute;
+        top: -40px;
+        right: 0;
+      }
+      img{
+        width: 80%;
+      }
+      h3{
+        padding: 20px 0;
+        font-size: 1.8rem;
+        font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+      }
+      p{
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+        text-align: justify;
+      }
+    }
+  }
+}

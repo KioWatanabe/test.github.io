@@ -1,0 +1,293 @@
+@charset "UTF-8";
+html {
+  /* ルートのフォントサイズを10pxに設定しておく */
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6em;
+}
+body .sp {
+  display: block;
+}
+@media screen and (min-width: 1024px) {
+  body .sp {
+    display: none;
+  }
+}
+body .pc {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  body .pc {
+    display: block;
+  }
+}
+
+p {
+  font-family: toppan-bunkyu-gothic-pr6n, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2.sub-title {
+  margin-top: 50px;
+  display: inline-block;
+  font-size: 2.4rem;
+  font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+  border-bottom: 5px solid #f7b52c;
+  position: relative;
+}
+h2.sub-title::before {
+  content: "";
+  position: absolute;
+  font-family: hero-new, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 6rem;
+  left: 50px;
+  bottom: -10px;
+  color: rgba(0, 0, 0, 0.1);
+}
+h2.sub-title::after {
+  content: url(/assets/img/kara.svg);
+  position: absolute;
+  top: -15px;
+  right: 0;
+  width: 10px;
+  height: 10px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+#main-view {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main-view::before {
+  width: 100%;
+  height: 0.8rem;
+  content: "";
+  background-color: #FDF3DE;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+#main-view::after {
+  width: 100%;
+  height: 0.8rem;
+  content: "";
+  background-color: #f7b52c;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#main-view #bg-movie {
+  width: 100%;
+  height: 100%;
+}
+
+#intro-message .container {
+  margin-top: 45px;
+}
+@media screen and (min-width: 1024px) {
+  #intro-message .container {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #intro-message .container .colum.message {
+    width: 50%;
+  }
+}
+#intro-message .container .colum.message h3 {
+  font-size: 2.1rem;
+  line-height: 3.7rem;
+  font-family: source-han-sans-japanese, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+#intro-message .container .colum.message p {
+  margin: 24px 0;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  text-align: justify;
+}
+#intro-message .container .colum.copy {
+  padding: 50px 0;
+  height: 100%;
+  text-align: center;
+  background-image: url("/assets/img/bland-text-bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 1024px) {
+  #intro-message .container .colum.copy {
+    width: 50%;
+  }
+}
+#intro-message .container .colum.copy img {
+  width: 90%;
+}
+
+#about {
+  background-color: #fff;
+  background-image: linear-gradient(#FDF3DE 0.5px, transparent 1px), linear-gradient(to right, #FDF3DE 0.5px, #fff 1px);
+  background-size: 20px 20px;
+  padding-top: 40px;
+  position: relative;
+}
+#about .img-area {
+  text-align: center;
+  padding-top: 20px;
+  position: relative;
+}
+#about .img-area::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  background-color: #f7b52c;
+  background-size: 6px 6px;
+  background-position: 0 0, 3px 3px;
+}
+#about .img-area img {
+  width: 80%;
+  position: relative;
+  z-index: 1;
+}
+#about h2.sub-title::before {
+  content: "ABOUT";
+}
+#about .text {
+  margin-top: 25px;
+  line-height: 3.4rem;
+  text-align: justify;
+}
+
+.slider {
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.slider img {
+  width: 70vw;
+  /*スライダー内の画像を60vwにしてレスポンシブ化*/
+  height: auto;
+  margin: 0 10px;
+}
+.slider .slick-slide {
+  transform: scale(1);
+  /*左右の画像のサイズを80%に*/
+  transition: all 0.5s;
+  /*拡大や透過のアニメーションを0.5秒で行う*/
+  opacity: 0.5;
+  /*透過50%*/
+}
+.slider .slick-slide.slick-center {
+  transform: scale(1);
+  /*中央の画像のサイズだけ等倍に*/
+  opacity: 1;
+  /*透過なし*/
+}
+
+/*矢印の設定*/
+/*ドットナビゲーションの設定*/
+.slick-dots {
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+.slick-dots button {
+  color: transparent;
+  outline: none;
+  width: 8px;
+  /*ドットボタンのサイズ*/
+  height: 8px;
+  /*ドットボタンのサイズ*/
+  display: block;
+  border-radius: 50%;
+  background: #ccc;
+  /*ドットボタンの色*/
+}
+.slick-dots .slick-active button {
+  background: #333;
+  /*ドットボタンの現在地表示の色*/
+}
+
+#point {
+  background-color: #FDF5E3;
+}
+#point h2.sub-title::before {
+  content: "POINT";
+}
+#point .sub-title-text {
+  margin-top: 10px;
+  width: 95%;
+}
+#point .inner {
+  padding: 80px 0;
+  counter-reset: count01;
+}
+#point .inner .colum {
+  max-width: 300px;
+  padding: 30px;
+  margin: 0 auto;
+  background-color: #FCE9BE;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+#point .inner .colum:not(:first-child) {
+  margin-top: 60px;
+}
+#point .inner .colum::before {
+  counter-increment: count01;
+  content: counter(count01, decimal-leading-zero);
+  position: absolute;
+  top: -40px;
+  right: 28px;
+  font-family: josefin-sans, sans-serif;
+  font-size: 6rem;
+  color: #f7b52c;
+}
+#point .inner .colum::before:nth-child(2) {
+  content: "02";
+}
+#point .inner .colum::before:nth-child(3) {
+  content: "03";
+}
+#point .inner .colum::after {
+  content: url(/assets/img/kara-outline.svg);
+  position: absolute;
+  top: -40px;
+  right: 0;
+}
+#point .inner .colum img {
+  width: 80%;
+}
+#point .inner .colum h3 {
+  padding: 20px 0;
+  font-size: 1.8rem;
+  font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+}
+#point .inner .colum p {
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  text-align: justify;
+}/*# sourceMappingURL=style.css.map */
